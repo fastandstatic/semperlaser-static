@@ -8,11 +8,11 @@
 	>
 
 <channel>
-	<title>semperlaser</title>
+	<title>Semper Laser</title>
 	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description></description>
-	<lastBuildDate>Fri, 19 Jan 2024 20:23:36 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 26 Jan 2024 14:32:58 +0000</lastBuildDate>
 	<language>es</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -22,7 +22,7 @@
 
 <image>
 	<url>/wp-content/uploads/2024/01/cropped-Logo-Semperlaser-32x32.png</url>
-	<title>semperlaser</title>
+	<title>Semper Laser</title>
 	<link>/</link>
 	<width>32</width>
 	<height>32</height>
