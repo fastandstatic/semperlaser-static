@@ -64,8 +64,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <link rel="stylesheet" id="e-swiper-css" href="/wp-content/plugins/elementor/assets/css/conditionals/e-swiper.min.css?ver=3.25.9" media="all">
 <link rel="stylesheet" id="e-popup-style-css" href="/wp-content/plugins/pro-elements/assets/css/conditionals/popup.min.css?ver=3.25.3" media="all">
 <link rel="stylesheet" id="elementor-post-1618-css" href="/wp-content/uploads/elementor/css/post-1618.css?ver=1732123251" media="all">
-<link rel="stylesheet" id="elementor-post-3784-css" href="/wp-content/uploads/elementor/css/post-3784.css?ver=1736279223" media="all">
-<link rel="stylesheet" id="elementor-post-931-css" href="/wp-content/uploads/elementor/css/post-931.css?ver=1736279559" media="all">
+<link rel="stylesheet" id="elementor-post-3784-css" href="/wp-content/uploads/elementor/css/post-3784.css?ver=1736287393" media="all">
+<link rel="stylesheet" id="elementor-post-931-css" href="/wp-content/uploads/elementor/css/post-931.css?ver=1736287393" media="all">
 <link rel="stylesheet" id="google-fonts-1-css" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=6.7.1" media="all">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <script src="/wp-content/plugins/pixelyoursite-pro/dist/scripts/js.cookie-2.1.3.min.js?ver=2.1.3" id="js-cookie-pys-js"></script>
@@ -930,96 +930,170 @@ div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swa
 				</div>
 				<div class="elementor-element elementor-element-db1a837 elementor-widget elementor-widget-html" data-id="db1a837" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-			<style>.swal2-popup {
-        font-family: 'Poppins', sans-serif;
-        border-radius: 12px;
-        padding: 20px;
-        background: #fff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			<style>.elementor-message.elementor-message-success {
+        display: none;
     }
-
-    .swal2-title {
-        color: #075E55;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    .swal2-html-container {
-        color: #333;
-        font-size: 16px;
-        line-height: 1.5;
-        text-align: center;
-    }
-
-    .swal2-confirm {
-        background: #075E55;
-        color: #fff;
-        border-radius: 8px;
-        font-size: 14px;
-        padding: 10px 20px;
-        transition: background 0.3s ease;
-    }
-
-    .swal2-confirm:hover {
-        background: #054d45;
-    }</style>
-
+    
+    .swal2-container button:where(.swal2-styled).swal2-confirm {
+    border: 0;
+    background: initial;
+    color: #ffffff;
+    font-size: 1em;
+}
+.swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
+    border-radius: 20px;
+    border: 4px solid #ffff;
+    color: #111313;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+h2#swal2-title {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Poppins';
+    color: #075e55;
+}
+button.swal2-confirm.swal-confirm-button.swal2-styled.swal2-default-outline {
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 20px;
+}</style>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    (function ($) {
-        const formId = '#What_Env';
+(function ($) {
+    const formId = '#What_Env';
+    const evento = 'Formulario landing';
 
-        const form = $(formId);
-        if (!form.length) {
-            console.error("No se encontró formulario con el ID");
-        } else {
-            form.on('submit', function (e) {
-                e.preventDefault(); // Evita el envío del formulario por defecto
+    const form = $(formId);
+    if (!form.length) {
+        console.error("No se encontró formulario con el ID");
+    } else {
+        form.on('submit', function (e) {
+            e.preventDefault(); // Evita el envío del formulario por defecto
+            
+                  // Cerrar el popup de Elementor si está abierto
+            const elementorPopup = $('.elementor-popup-modal');
+            if (elementorPopup.length) {
+                elementorPopup.fadeOut();
+            }
 
-                // Captura los datos del formulario
-                const formData = form.serializeArray();
-                const data = {};
-                formData.forEach((input) => {
-                    data[input.name] = input.value;
-                });
+            // Obtener la fecha y hora actual en un formato legible para humanos (solo hora y minutos, en la zona horaria de Colombia)
+            const currentDate = new Date();
+            const options = { timeZone: 'America/Bogota', hour12: false, hour: 'numeric', minute: 'numeric', year: 'numeric', month: 'numeric', day: 'numeric' };
+            const formattedDateTime = currentDate.toLocaleString('es-CO', options); // Formatear a la hora de Colombia
 
-                // Muestra el popup de confirmación sencillo
-                Swal.fire({
-                    title: "¡Gracias por contactarnos!",
-                    html: `
-                        <p>Hemos recibido tu mensaje. Nos pondremos en contacto contigo pronto.<\/p>
-                        <p>¡Que tengas un excelente día!<\/p>
-                    `,
-                    icon: "success",
-                    confirmButtonText: "Aceptar",
-                    confirmButtonColor: "#075E55",
-                });
+            // Obtener si el usuario está en móvil o escritorio
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const deviceType = isMobile ? 'Mobile' : 'Escritorio';
 
-                // Envía los datos del formulario por webhook
-                fetch('https://hook.us1.make.com/k9121gczx5ncjbgupwyt5ag391fcit45', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al enviar los datos por el webhook');
-                    }
-                    return response.json();
-                })
-                .then(responseData => {
-                    console.log('Respuesta del webhook:', responseData);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            // Captura los datos del formulario
+            const formData = form.serializeArray();
+            const data = {};
+            formData.forEach((input) => {
+                data[input.name] = input.value;
             });
-        }
-    })(jQuery);
-</script>
-		</div>
+            
+
+            // Agregar la hora y fecha formateadas a los datos del formulario
+            data['dateTime'] = formattedDateTime;
+            data['deviceType'] = deviceType;
+
+            // Agregar UTM parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const utm_source = urlParams.get('utm_source');
+            const utm_medium = urlParams.get('utm_medium');
+            const utm_campaign = urlParams.get('utm_campaign');
+            const utm_term = urlParams.get('utm_term');
+            const utm_content = urlParams.get('utm_content');
+
+            data['utm_source'] = utm_source;
+            data['utm_medium'] = utm_medium;
+            data['utm_campaign'] = utm_campaign;
+            data['utm_term'] = utm_term;
+            data['utm_content'] = utm_content;
+
+            // Muestra la alerta con la información del usuario
+            Swal.fire({
+                title: "¡Tu mensaje fue recibido!",
+                html: 
+                    <div style="text-align: left;">
+                        <p style="margin-bottom: 10px;"><strong>Gracias por contactarnos.<\/strong><\/p>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li><strong>Nombre:<\/strong> ${data['form_fields[chat_name]']}<\/li>
+                            <li><strong>Apellido:<\/strong> ${data['form_fields[chat_lastname]']}<\/li>
+                            <li><strong>WhatsApp:<\/strong> ${data['form_fields[chat_what]']}<\/li>
+                            <li><strong>Servicio Selecionado:<\/strong> ${data['form_fields[chat_option]']}<\/li>
+                            <li><strong>Ciudad Selecionado:<\/strong> ${data['form_fields[chat_ciudad]']}<\/li>
+                        <\/ul>
+                    <\/div>
+                ,
+                icon: "success",
+                confirmButtonColor: "#075E55",
+                confirmButtonText: "Continuar",
+                customClass: {
+                    container: 'swal-container',
+                    title: 'swal-title',
+                    content: 'swal-content',
+                    confirmButton: 'swal-confirm-button',
+                },
+                customContainerClass: 'swal-custom-container',
+                customCSS: {
+                    background: '#fff',
+                    border: '2px solid #ffff',
+                    borderRadius: '8px',
+                    color: '#26528F',
+                    fontFamily: 'Arial, sans-serif',
+                },
+            }).then((result) => {
+                // Ocultar el popup de Elementor Pro después de que se cierre la alerta
+                if (window.elementorProFrontend && window.elementorProFrontend.modules.popup) {
+                    const popup = window.elementorProFrontend.modules.popup.getPopupView();
+                    if (popup) {
+                        popup.hide();
+                    }
+                }
+            });
+
+            // Envía los datos del formulario por webhook
+            fetch('https://hook.us1.make.com/k9121gczx5ncjbgupwyt5ag391fcit45', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al enviar los datos por el webhook');
+                }
+                return response.json();
+            })
+            .then(responseData => {
+                console.log('Respuesta del webhook:', responseData);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            // Enviar evento a Google Analytics cuando se envía el formulario de WhatsApp
+            gtag('event', 'Chat_whatsapp_enviado', {
+                'event_category': 'Formulario',
+                'event_label': 'Chat_whatsapp_enviado',
+            });
+
+            // Enviar evento al píxel de Facebook cuando se envía el formulario de WhatsApp
+            fbq('track', 'Chat_whatsapp_enviado', {
+                'event_category': 'Formulario',
+                'event_label': 'Chat_whatsapp_enviado',
+            });
+                
+          
+        }); // Esta línea cierra el método on('submit')
+    }
+    
+})(jQuery);
+</script>		</div>
 				</div>
 				</div>
 				</div>
@@ -1211,102 +1285,176 @@ div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swa
 				</div>
 				<div class="elementor-element elementor-element-6a999c6 elementor-widget elementor-widget-html" data-id="6a999c6" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-			<style>.swal2-popup {
-        font-family: 'Poppins', sans-serif;
-        border-radius: 12px;
-        padding: 20px;
-        background: #fff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			<style>.elementor-message.elementor-message-success {
+        display: none;
     }
-
-    .swal2-title {
-        color: #075E55;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    .swal2-html-container {
-        color: #333;
-        font-size: 16px;
-        line-height: 1.5;
-        text-align: center;
-    }
-
-    .swal2-confirm {
-        background: #075E55;
-        color: #fff;
-        border-radius: 8px;
-        font-size: 14px;
-        padding: 10px 20px;
-        transition: background 0.3s ease;
-    }
-
-    .swal2-confirm:hover {
-        background: #054d45;
-    }</style>
-
+    
+    .swal2-container button:where(.swal2-styled).swal2-confirm {
+    border: 0;
+    background: initial;
+    color: #ffffff;
+    font-size: 1em;
+}
+.swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
+    border-radius: 20px;
+    border: 4px solid #ffff;
+    color: #111313;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+h2#swal2-title {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Poppins';
+    color: #075e55;
+}
+button.swal2-confirm.swal-confirm-button.swal2-styled.swal2-default-outline {
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 20px;
+}</style>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    (function ($) {
-        const formId = '#What_Env2';
+(function ($) {
+    const formId = '#What_Env2';
+    const evento = 'Formulario landing';
 
-        const form = $(formId);
-        if (!form.length) {
-            console.error("No se encontró formulario con el ID");
-        } else {
-            form.on('submit', function (e) {
-                e.preventDefault(); // Evita el envío del formulario por defecto
+    const form = $(formId);
+    if (!form.length) {
+        console.error("No se encontró formulario con el ID");
+    } else {
+        form.on('submit', function (e) {
+            e.preventDefault(); // Evita el envío del formulario por defecto
+            
+                  // Cerrar el popup de Elementor si está abierto
+            const elementorPopup = $('.elementor-popup-modal');
+            if (elementorPopup.length) {
+                elementorPopup.fadeOut();
+            }
 
-                // Captura los datos del formulario
-                const formData = form.serializeArray();
-                const data = {};
-                formData.forEach((input) => {
-                    data[input.name] = input.value;
-                });
+            // Obtener la fecha y hora actual en un formato legible para humanos (solo hora y minutos, en la zona horaria de Colombia)
+            const currentDate = new Date();
+            const options = { timeZone: 'America/Bogota', hour12: false, hour: 'numeric', minute: 'numeric', year: 'numeric', month: 'numeric', day: 'numeric' };
+            const formattedDateTime = currentDate.toLocaleString('es-CO', options); // Formatear a la hora de Colombia
 
-                // Muestra el popup de confirmación sencillo
-                Swal.fire({
-                    title: "¡Gracias por contactarnos!",
-                    html: `
-                        <p>Hemos recibido tu mensaje. Nos pondremos en contacto contigo pronto.<\/p>
-                        <p>¡Que tengas un excelente día!<\/p>
-                    `,
-                    icon: "success",
-                    confirmButtonText: "Aceptar",
-                    confirmButtonColor: "#075E55",
-                });
+            // Obtener si el usuario está en móvil o escritorio
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const deviceType = isMobile ? 'Mobile' : 'Escritorio';
 
-                // Envía los datos del formulario por webhook
-                fetch('https://hook.us1.make.com/k9121gczx5ncjbgupwyt5ag391fcit45', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al enviar los datos por el webhook');
-                    }
-                    return response.json();
-                })
-                .then(responseData => {
-                    console.log('Respuesta del webhook:', responseData);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            // Captura los datos del formulario
+            const formData = form.serializeArray();
+            const data = {};
+            formData.forEach((input) => {
+                data[input.name] = input.value;
             });
-        }
-    })(jQuery);
-</script>
-		</div>
+            
+
+            // Agregar la hora y fecha formateadas a los datos del formulario
+            data['dateTime'] = formattedDateTime;
+            data['deviceType'] = deviceType;
+
+            // Agregar UTM parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const utm_source = urlParams.get('utm_source');
+            const utm_medium = urlParams.get('utm_medium');
+            const utm_campaign = urlParams.get('utm_campaign');
+            const utm_term = urlParams.get('utm_term');
+            const utm_content = urlParams.get('utm_content');
+
+            data['utm_source'] = utm_source;
+            data['utm_medium'] = utm_medium;
+            data['utm_campaign'] = utm_campaign;
+            data['utm_term'] = utm_term;
+            data['utm_content'] = utm_content;
+
+            // Muestra la alerta con la información del usuario
+            Swal.fire({
+                title: "¡Tu mensaje fue recibido!",
+                html: 
+                    <div style="text-align: left;">
+                        <p style="margin-bottom: 10px;"><strong>Gracias por contactarnos.<\/strong><\/p>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li><strong>Nombre:<\/strong> ${data['form_fields[chat_name]']}<\/li>
+                            <li><strong>Apellido:<\/strong> ${data['form_fields[chat_lastname]']}<\/li>
+                            <li><strong>WhatsApp:<\/strong> ${data['form_fields[chat_what]']}<\/li>
+                            <li><strong>Servicio Selecionado:<\/strong> ${data['form_fields[chat_option]']}<\/li>
+                            <li><strong>Ciudad Selecionado:<\/strong> ${data['form_fields[chat_ciudad]']}<\/li>
+                        <\/ul>
+                    <\/div>
+                ,
+                icon: "success",
+                confirmButtonColor: "#075E55",
+                confirmButtonText: "Continuar",
+                customClass: {
+                    container: 'swal-container',
+                    title: 'swal-title',
+                    content: 'swal-content',
+                    confirmButton: 'swal-confirm-button',
+                },
+                customContainerClass: 'swal-custom-container',
+                customCSS: {
+                    background: '#fff',
+                    border: '2px solid #ffff',
+                    borderRadius: '8px',
+                    color: '#26528F',
+                    fontFamily: 'Arial, sans-serif',
+                },
+            }).then((result) => {
+                // Ocultar el popup de Elementor Pro después de que se cierre la alerta
+                if (window.elementorProFrontend && window.elementorProFrontend.modules.popup) {
+                    const popup = window.elementorProFrontend.modules.popup.getPopupView();
+                    if (popup) {
+                        popup.hide();
+                    }
+                }
+            });
+
+            // Envía los datos del formulario por webhook
+            fetch('https://hook.us1.make.com/k9121gczx5ncjbgupwyt5ag391fcit45', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al enviar los datos por el webhook');
+                }
+                return response.json();
+            })
+            .then(responseData => {
+                console.log('Respuesta del webhook:', responseData);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            // Enviar evento a Google Analytics cuando se envía el formulario de WhatsApp
+            gtag('event', 'Chat_whatsapp_enviado', {
+                'event_category': 'Formulario',
+                'event_label': 'Chat_whatsapp_enviado',
+            });
+
+            // Enviar evento al píxel de Facebook cuando se envía el formulario de WhatsApp
+            fbq('track', 'Chat_whatsapp_enviado', {
+                'event_category': 'Formulario',
+                'event_label': 'Chat_whatsapp_enviado',
+            });
+                
+          
+        }); // Esta línea cierra el método on('submit')
+    }
+    
+})(jQuery);
+</script>		</div>
 				</div>
 				<div class="elementor-element elementor-element-effa82e elementor-align-right elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="effa82e" data-element_type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
 					<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-										<span class="elementor-icon-list-text">4:47 pm</span>
+										<span class="elementor-icon-list-text">5:04 pm</span>
 									</li>
 						</ul>
 				</div>
