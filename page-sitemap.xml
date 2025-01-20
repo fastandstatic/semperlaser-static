@@ -2,21 +2,24 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>/</loc>
-		<lastmod>2025-01-08T14:02:45+00:00</lastmod>
+		<lastmod>2025-01-20T21:17:42+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2024/01/Logo-Semperlaser.png</image:loc>
+			<image:loc>/wp-content/uploads/2025/01/logo-skin.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2024/01/Grupo-6478.png</image:loc>
+			<image:loc>/wp-content/uploads/2024/03/Screenshot_1776-1024x514.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2024/01/Grupo-6484.png</image:loc>
+			<image:loc>/wp-content/uploads/2025/01/iconnew-2.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2024/01/Grupo-6485.png</image:loc>
+			<image:loc>/wp-content/uploads/2025/01/iconnew-1.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2024/01/Grupo-6481-1.png</image:loc>
+			<image:loc>/wp-content/uploads/2025/01/iconnew-4.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>/wp-content/uploads/2025/01/iconnew-3.png</image:loc>
 		</image:image>
 		<image:image>
 			<image:loc>/wp-content/uploads/2024/01/Grupo-6482.png</image:loc>
@@ -85,7 +88,7 @@
 			<image:loc>/wp-content/uploads/2024/01/Grupo-6478-2.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2024/01/Logo-Semperlaser.png</image:loc>
+			<image:loc>/wp-content/uploads/2025/01/logo-skin.png</image:loc>
 		</image:image>
 	</url>
 	<url>
