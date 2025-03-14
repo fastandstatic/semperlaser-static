@@ -66,7 +66,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <link rel="stylesheet" id="widget-nested-accordion-css" href="/wp-content/plugins/elementor/assets/css/widget-nested-accordion.min.css?ver=3.27.7" media="all">
 <link rel="stylesheet" id="widget-divider-css" href="/wp-content/plugins/elementor/assets/css/widget-divider.min.css?ver=3.27.7" media="all">
 <link rel="stylesheet" id="elementor-post-539-css" href="/wp-content/uploads/elementor/css/post-539.css?ver=1741963872" media="all">
-<link rel="stylesheet" id="elementor-post-3784-css" href="/wp-content/uploads/elementor/css/post-3784.css?ver=1741964777" media="all">
+<link rel="stylesheet" id="elementor-post-3784-css" href="/wp-content/uploads/elementor/css/post-3784.css?ver=1741967901" media="all">
 <link rel="stylesheet" id="elementor-post-931-css" href="/wp-content/uploads/elementor/css/post-931.css?ver=1741903547" media="all">
 <link rel="stylesheet" id="hello-elementor-child-style-css" href="/wp-content/themes/hello-theme-child-master/style.css?ver=2.0.0" media="all">
 <link rel="stylesheet" id="google-fonts-1-css" href="https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CMontserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=6.7.2" media="all">
@@ -1802,7 +1802,7 @@ function utm_llenar(){
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-										<span class="elementor-icon-list-text">10:06 am</span>
+										<span class="elementor-icon-list-text">10:59 am</span>
 									</li>
 						</ul>
 						</div>
@@ -1990,9 +1990,7 @@ function utm_llenar(){
     h2#swal2-title {
         color: black;
     }</style>
-
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>document.addEventListener('DOMContentLoaded', function() {
 
         const botonFlotante = document.querySelector('#boton_flotante');
@@ -2024,8 +2022,16 @@ function utm_llenar(){
             sendUtm(); // Capturar las UTM antes de enviarlo
         
             const data = new FormData(event.target);
+            
+            // Agregar UTM manualmente en caso de que no se capturen bien
+            data.append("form_fields[utm_term]", new URLSearchParams(window.location.search).get('utm_term') || "");
+            data.append("form_fields[utm_medium]", new URLSearchParams(window.location.search).get('utm_medium') || "");
+            data.append("form_fields[utm_campaign]", new URLSearchParams(window.location.search).get('utm_campaign') || "");
+            data.append("form_fields[utm_source]", new URLSearchParams(window.location.search).get('utm_source') || "");
+            data.append("form_fields[utm_content]", new URLSearchParams(window.location.search).get('utm_content') || "");
+        
             const value = Object.fromEntries(data.entries());
-            console.log('Datos del formulario:', value);
+            console.log('📩 Datos enviados en FormData después de forzar UTM:', value);
         
             try {
                 await sendToMake(data); // Espera a que los datos se envíen correctamente
@@ -2138,13 +2144,14 @@ function utm_llenar(){
             Object.keys(utmParams).forEach(name => {
                 const field = document.querySelector(`[name="${name}"]`);
                 if (field) {
-                    field.value = utmParams[name] || ""; // Si no hay valor, dejarlo vacío
+                    field.value = utmParams[name] || ""; 
+                    console.log(`✅ ${name}:`, field.value);
                 } else {
-                    console.warn(`Campo ${name} no encontrado`);
+                    console.warn(`⚠️ Campo ${name} no encontrado en el formulario`);
                 }
             });
         }
-        
+                
         // Guardar las UTM al cargar la página
         saveUtm();
         
